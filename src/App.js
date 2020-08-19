@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import axios from "axios"
+import "./App.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    isLoading: true
+  }
+  async componentDidMount() {
+    let galleryData = await axios.get("https://picsum.photos/v2/list")
+    console.log(galleryData.data)
+    this.setState({ galleryArr: galleryData.data })
+    this.setState({ isLoading: false })
+  }
+  render() {
+    return (
+      <div className="App">
+
+        {this.state.isLoading ? "wait for it..." :
+          this.state.galleryArr.map((elt) => {
+            return <Card className="container" key={elt.id} >
+              <Card.Img variant="top" src={elt.download_url} />
+              <Card.Body>
+                <Card.Title>{elt.author}</Card.Title>
+                <Button className="btn">See more</Button>
+              </Card.Body>
+            </Card>
+          })
+        }
+      </div>);
+  }
 }
 
 export default App;

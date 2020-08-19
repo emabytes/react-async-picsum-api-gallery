@@ -1,38 +1,29 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+padding: 1vh 3%;
+gap: 30px;
+font-family: 'Playfair Display', serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App img{
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App .container{
+  box-shadow: 0 10px 40px -14px rgba(0, 0, 0, 0.55);
 }
-
-.App-link {
-  color: #61dafb;
+.App .btn {
+  background: rgb(29, 29, 29);
+  color: rgb(141, 205, 206);
+  font-weight: bolder;
+  padding: 10px 20px;
+  letter-spacing: 2px;
+  border: none;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App .btn:hover {
+  color: rgb(29, 29, 29);
+  background: rgb(141, 205, 206);
 }
